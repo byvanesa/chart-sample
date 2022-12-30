@@ -1,39 +1,27 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS,Title,Tooltip,LineElement,Legend, CategoryScale,LinearScale,PointElement } from 'chart.js';
+ ChartJS.register(
+  Title, Tooltip,LineElement,Legend,CategoryScale
+  ,LinearScale,PointElement
+ )
 
-export default class App extends Component {
-    constructor(Props) {
-        super(Props);
-
-        this.state = {
-            data: {
-                label:["1", "2", "3", "4", "5"],
-                datasets: [
-                {
-                    label: "Temperature",
-                    backgroundColor: "rgba(255, 0, 255, 0.75)",
-                    data: [30, 35, 40, 41, 37, 37, 35 ]
-                },
-                {
-                    label: "Time",
-                    backgroundColor: "rgba(0, 255, 0, 0.75)",
-                    data: [9, 10, 11, 12, 1, 2, 3]
-                }
-            ]
-        }
+function App(){
+  const[data, setData]=useState({
+    labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    datasets:[
+      {
+      label:"COVID cases",
+      backgroundColor:"purple",
+      data:[10,20,30,40,50,43,35,83,61,73,22,58],
     }
-} 
-    render() {
-        return (
-            <div style={{position: "relative", width: 600, height: 550 }}>
-                <h3>Chart Smaple</h3>
-                <Line
-                    options={{
-                        responsive: true
-                    }}
-                    data={this.state.date}
-                />
-            </div>
-        )
-    }
-}
+    ]
+  })
+ return (
+    <div className="App" style={{width:'600px',height:'300px',backgroundColor:"antiquewhite"}}>
+      <Line data={data} style={{color:"yellow"}}>Hi</Line>
+               
+     </div>
+ );
+};
+export default App;
