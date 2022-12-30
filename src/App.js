@@ -7,7 +7,7 @@ import { Chart as ChartJS,Title,Tooltip,LineElement,Legend, CategoryScale,Linear
  )
 
 function App(){
-  const[data, setData]=useState({
+  const[data]=useState({
     labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
     datasets:[
       {
